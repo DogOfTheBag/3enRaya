@@ -17,7 +17,7 @@ public class App extends Thread{
 
     @Override
     public void run() {
-        new VPal("3 EN RAYA").setVisible(true);
+        new VPal("3 en Raya").setVisible(true);
       
     }
 

@@ -76,7 +76,8 @@ public class PPal extends javax.swing.JPanel {
     }//GEN-LAST:event_botonReglasActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
-        JOptionPane.showMessageDialog(null, "hasta la proxima");
+        //dispose hace
+        JOptionPane.showMessageDialog(null, "Hasta la proxima");
         v.dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
 
