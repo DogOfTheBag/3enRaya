@@ -52,12 +52,15 @@ public class PJuego extends javax.swing.JPanel {
         v.setContentPane(v.ppal);
         //IMPORTANTE EL REVALIDATE QUE SI NO NO SE CAMBIA EL PANEL ***************************************************
         v.revalidate();
+        // si sale se reinicia tambien el turno al inicial
+        turno1 = true;
     }
     
     /*la verdad es que esto es una guarreria, deberia haber hecho una clase juego (creo yo)
     y meter toda la logica de si es el ganador y todo eso ahi pero no se mezclarlo, la verdad*/
     //I FILAS J COLUMNAS*********************
-    public void generarTablero(){   
+    public void generarTablero(){
+        
         /*hacemos un tablero de 3x3 (aunque creo que teniendo el gridLayout da igual y los añadimos*/
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -77,22 +80,28 @@ public class PJuego extends javax.swing.JPanel {
                         else
                             casillas[fila][columna].setText("2");
                     }
-                    //verificamos despues si este evento ha hecho que haya ganador o empate
+                    //verificamos despues si este evento ha hecho que haya ganador o empate, siempre reiniciamos el turno en todos los casos
                     if(verificarGanador(fila, columna)){
                         if (turno1){
                            JOptionPane.showMessageDialog(null, "Ha ganado el jugador 1");
                            reiniciarJuego();
+                           turno1 = true;
                         }
                         else{
                             JOptionPane.showMessageDialog(null, "Ha ganado el jugador 2");
                             reiniciarJuego();
+                            turno1 = true;
+
                         }
                     }else if (esEmpate()){
                         JOptionPane.showMessageDialog(null, "EMPATEEEEEEEE");
                         reiniciarJuego();
+                        turno1 = true;
                     }
-                    //cambiamos turno
-                    turno1 = !turno1;
+                    else
+                        //cambiamos turno si no hay ganador
+                        turno1 = !turno1;
+                    
                 });
                 
             }
@@ -119,7 +128,6 @@ public class PJuego extends javax.swing.JPanel {
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)
                 casillas[i][j].setText("");
-        turno1 = true;
     }
     /*mira primero si la casilla primera está vacia. después si la primera casilla y la segunda son iguales,
     y despues si la segunda y la tercera son iguales. De esta forma puedes comprobar si cualquiera de las 3 casillas esta vacia
