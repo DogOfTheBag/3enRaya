@@ -64,9 +64,11 @@ public class PJuego extends javax.swing.JPanel {
                 casillas[i][j] = new JButton("");
                 casillas[i][j].setFont(new Font("Arial",Font.BOLD, 40));
                 Panel3EnRaya.add(casillas[i][j]);
+                
                 /*convertimos la i y la j a otras variables para que no se pierdan después a la hora de los eventos
                 al tener primero el bucle que hace todo primero*/
                 int fila = i, columna = j;
+                //comprobamos con el evento, y escribimos acorde al turno en el que estamos
                 casillas[fila][columna].addActionListener(e -> {
                     if(casillas[fila][columna].getText().equalsIgnoreCase("")){
                         //AQUI PODEMOS CAMBIAR LO QUE SALGA EN LOS BOTONES, CAMBIAMOS EL 1 Y EL 2***************************************************
@@ -75,6 +77,7 @@ public class PJuego extends javax.swing.JPanel {
                         else
                             casillas[fila][columna].setText("2");
                     }
+                    //verificamos despues si este evento ha hecho que haya ganador o empate
                     if(verificarGanador(fila, columna)){
                         if (turno1){
                            JOptionPane.showMessageDialog(null, "Ha ganado el jugador 1");
@@ -88,6 +91,7 @@ public class PJuego extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(null, "EMPATEEEEEEEE");
                         reiniciarJuego();
                     }
+                    //cambiamos turno
                     turno1 = !turno1;
                 });
                 
