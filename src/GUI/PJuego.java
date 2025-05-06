@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -75,10 +76,14 @@ public class PJuego extends javax.swing.JPanel {
                 casillas[fila][columna].addActionListener(e -> {
                     if(casillas[fila][columna].getText().equalsIgnoreCase("")){
                         //AQUI PODEMOS CAMBIAR LO QUE SALGA EN LOS BOTONES, CAMBIAMOS EL 1 Y EL 2***************************************************
-                        if (this.turno1)
+                        if (this.turno1){
                             casillas[fila][columna].setText("1");
-                        else
+                            casillas[fila][columna].setBackground(Color.red);
+                        }
+                        else{
                             casillas[fila][columna].setText("2");
+                            casillas[fila][columna].setBackground(Color.blue);
+                        }
                     }
                     //verificamos despues si este evento ha hecho que haya ganador o empate, siempre reiniciamos el turno en todos los casos
                     if(verificarGanador(fila, columna)){
@@ -125,9 +130,12 @@ public class PJuego extends javax.swing.JPanel {
     
     //restablece todas las casillas
     private void reiniciarJuego() {
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < 3; j++){
                 casillas[i][j].setText("");
+                casillas[i][j].setBackground(null);
+            }
+        }
     }
     /*mira primero si la casilla primera está vacia. después si la primera casilla y la segunda son iguales,
     y despues si la segunda y la tercera son iguales. De esta forma puedes comprobar si cualquiera de las 3 casillas esta vacia
