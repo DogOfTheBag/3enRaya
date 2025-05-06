@@ -24,17 +24,19 @@ public class PPal extends javax.swing.JPanel {
     private void initComponents() {
 
         ajedrezLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         panelBotones = new javax.swing.JPanel();
         botonJugar = new javax.swing.JButton();
         botonReglas = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
 
-        setLayout(new java.awt.GridLayout(2, 1));
+        setLayout(new java.awt.GridLayout(3, 1));
 
         ajedrezLabel.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         ajedrezLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ajedrezLabel.setText("3 EN RAYA");
         add(ajedrezLabel);
+        add(jPanel1);
 
         panelBotones.setLayout(new java.awt.GridLayout(1, 3));
 
@@ -87,6 +89,7 @@ public class PPal extends javax.swing.JPanel {
     private javax.swing.JButton botonJugar;
     private javax.swing.JButton botonReglas;
     private javax.swing.JButton botonSalir;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panelBotones;
     // End of variables declaration//GEN-END:variables
 }

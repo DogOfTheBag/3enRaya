@@ -21,7 +21,7 @@ public class PJuego extends javax.swing.JPanel {
         initComponents();
     }
     
-
+//***************************************INIT COMPONENTS EMPIEZA AQUI**************************************************
     private void initComponents() {
         //********************************DECLARACION DE VARIABLES**********************************************
         Panel3EnRaya = new JPanel();
@@ -46,7 +46,7 @@ public class PJuego extends javax.swing.JPanel {
         });
         add(botonVolver);
     }
-   
+   //***************************************INIT COMPONENTS ACABA AQUI**************************************************
     private void botonVolverActionPerformed() {                                            
         //reiniciamos el juego aqui por si dejamos una partida a medio empezar que la proxima vez que abramos este limpio de nuevo
         reiniciarJuego();
@@ -72,6 +72,7 @@ public class PJuego extends javax.swing.JPanel {
                 /*convertimos la i y la j a otras variables para que no se pierdan después a la hora de los eventos
                 al tener primero el bucle que hace todo primero*/
                 int fila = i, columna = j;
+                
                 //comprobamos con el evento, y escribimos acorde al turno en el que estamos
                 casillas[fila][columna].addActionListener(e -> {
                     if(casillas[fila][columna].getText().equalsIgnoreCase("")){
@@ -85,6 +86,7 @@ public class PJuego extends javax.swing.JPanel {
                             casillas[fila][columna].setBackground(Color.blue);
                         }
                     }
+                    
                     //verificamos despues si este evento ha hecho que haya ganador o empate, siempre reiniciamos el turno en todos los casos
                     if(verificarGanador(fila, columna)){
                         if (turno1){
@@ -106,13 +108,11 @@ public class PJuego extends javax.swing.JPanel {
                     else
                         //cambiamos turno si no hay ganador
                         turno1 = !turno1;
-                    
                 });
-                
             }
         }
     }
-
+    //me hago unas funciones ahora para comprobar si hay victoria, estan abajo
     private boolean verificarGanador(int fila, int columna) {
         if(filaIgual(fila) || columnaIgual(columna) || diago1Igual() || diago2Igual())
             return true;
