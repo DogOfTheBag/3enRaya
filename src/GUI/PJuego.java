@@ -107,7 +107,13 @@ public class PJuego extends javax.swing.JPanel {
                     }
                     else
                         //cambiamos turno si no hay ganador
-                        turno1 = !turno1;
+                        /*ME ACABO DE DAR CUENTA DE QUE HAY UN ERROR
+                        SI PULSAS UN BOTON YA PULSADO CAMBIA EL TURNO Y UN JUGADOR PUEDE JUGAR VARIAS VECES SEGUIDAS
+                        CON ESTO DE AQUI ABAJO NO SE ARREGLA YA QUE SALE SIEMPRE EL MENSAJE Y NO CAMBIA TURNO, HAY QUE REUBICARLO*/
+                        if(casillas[fila][columna].getText().equalsIgnoreCase(""))
+                            turno1 = !turno1;
+                        else
+                            JOptionPane.showMessageDialog(null, "No puedes pulsar un panel ya usado");
                 });
             }
         }
